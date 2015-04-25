@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Video Game Character Charade</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="css.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="form-control" id="inputSystem" />
+    <input type="form-control" id="inputName" />
+    <textarea class="form-control" id="inputStory"></textarea>
+    <button class="btn btn-default" onclick="sendVGCharacter()">Add the Character</button>
+    <br />
+    <br />
+    <p id="displayVGcharacters"></p>
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Your Details</h4>
+                </div>
+                <div class="modal-body">
+                    <b>Platform:</b><input placeholder="Crossplatform..." class="form-control" id="editPlatform" />
+
+                    <i>Name:</i><input placeholder="Did you call Link Zelda again?....." class="form-control" id="editName" />
+                    <i>Story:</i><input class="form-control" id="editStory" placeholder="Add more to the story..." />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <span id="SaveEditButton"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
