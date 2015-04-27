@@ -1,5 +1,5 @@
 ﻿//noSQL database
-var firebaseURL = 'https://videogame.firebaseio.com/'
+var firebaseURL = 'https://videogame.firebaseio.com/';
 //objConstructor
 var vgCharacter = function (Platform, Name, Story) {
     this.Platform = Platform;
@@ -8,7 +8,7 @@ var vgCharacter = function (Platform, Name, Story) {
 }
 //Just for fun on the prototype
 vgCharacter.prototype = function () {
-    alert("People who own" + this.Platform + "have enjoyed" + this.Name);
+    console.log("People who own" + this.Platform + "have enjoyed" + this.Name);
 }
 
 //vgCharacter array
@@ -144,7 +144,7 @@ String.prototype.reverse = function () {
 //this is the polling get call
 var getVGCharacters2 = function () {
     var request = new XMLHttpRequest()
-    setTimeout(getVGCharacters2, 3000);
+    setTimeout(getVGCharacters2, 30000);
     request.open('GET', firebaseURL + '.json', true);
     request.onload = function () {
         if (this.status >= 200 && this.status < 400) {
