@@ -60,13 +60,16 @@ var postVGCharacter = function (sendVGCharacter) {
 }
 
 
-//this is the normal get call
+//Used recursive time out to do a poll on an update.
 var getVGCharacters = function () {
     var request = new XMLHttpRequest()
     request.open('GET', firebaseURL + '.json', true);
     request.onload = function () {
         if (this.status >= 200 && this.status < 400) {
             var response = JSON.parse(this.response);
+            //always set the array to zero in a poll call.
+            vgCharacters.length = 0;
+            setTimeout(getVGCharacters, 30000);
             for (var propName in response) {
                 response[propName].key = propName;
                 vgCharacters.push(response[propName]);
@@ -76,7 +79,7 @@ var getVGCharacters = function () {
         }
         else {
             console.log(this.response);
-           
+            clearTimeout(getVGCharacters);
         }
     }
     request.send();
@@ -141,29 +144,7 @@ String.prototype.reverse = function () {
     
      this.split("").reverse().join("");
 }
-//this is the polling get call
-var getVGCharacters2 = function () {
-    var request = new XMLHttpRequest()
-    setTimeout(getVGCharacters2, 30000);
-    request.open('GET', firebaseURL + '.json', true);
-    request.onload = function () {
-        if (this.status >= 200 && this.status < 400) {
-            var response = JSON.parse(this.response);
-            
-            }
-
-        
-        else {
-            console.log(this.response);
-            clearTimeout(getvgCharacters2);
-        }
-    }
-    request.send();
 
 
-}
-
-   //this fetches the information from the Database.
+   //this fetches the information from the Database. 
 getVGCharacters();
-//this fires off the polling ajax call.
-getVGCharacters2();
